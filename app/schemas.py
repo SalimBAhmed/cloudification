@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class User(BaseModel):
+class UserBase(BaseModel):
     first_name : str
     last_name : str
     age : int
@@ -11,5 +11,8 @@ class User(BaseModel):
     skin_thickness: float = 0
     insulin: float = 0
     bmi: float = 0 
-    dpf: float = 0
-    result: str = "Good"
+    dpf: int = 0
+    result: int = 0
+
+    class Config:
+        orm_mode = True
