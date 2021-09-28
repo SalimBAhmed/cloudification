@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('css', path='/style.css') }}">
+
+    </head>
+    <body>
+        <h1>Welcome page</h1>
+        <main>
+            <form action="/" method="POST">
+                <label for="fname">First Name:</label>
+                <input type="text" name="first_name" id="fname" value="salim">
+                <label for="lname">Last Name:</label>
+                <input type="text" name="last_name" id="lname" value="ben ahmed">
+                <br/>
+                <label for="age">Age</label>
+                <input type="text" name="age" id="age" value="23">
+                <br>
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+                <br>
+                <label for="pregnancies">pregnancies</label>
+                <input type="text" name="pregnancies" id="pregnancies" value="0">
+                <br>
+                <label for="glucose">Glucose</label>
+                <input type="text" name="glucose" id="glucose">
+                <br>
+                <label for="bloodPressure">Blood Pressure</label>
+                <input type="text" name="blood_pressure" id="bloodPressure">
+                <br>
+                <label for="skinThickness">Skin Thickness</label>
+                <input type="text" name="skin_thickness" id="skinThickness">
+                <br>
+                <label for="insulin">Insulin</label>
+                <input type="text" name="insulin" id="insulin">
+                <br>
+                <label for="height">Height</label>
+                <input type="text" name="height" id="height" value="170">
+                <br>
+                <label for="mass">Mass</label>
+                <input type="text" name="mass" id="mass" value="64">
+                <br>
+                <label for="diabetesPedigreeFunction">Diabtes Perdgree Function</label>
+                <input type="text" name="dpf" id="diabetesPedigreeFunction">
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>
