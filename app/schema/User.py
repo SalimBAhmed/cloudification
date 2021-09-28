@@ -15,5 +15,5 @@ users=table(
     Column('insulin', Float),
     Column('bmi', Float),
     Column('dfp', Float),
-    Column('Résultat', String(255)),
+    Column('resultat', String(255)),
     )
