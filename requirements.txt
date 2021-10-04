@@ -1,1 +1,6 @@
-pwe
+fastapi[all]
+uvicorn
+sqlalchemy
+pymysql
+mysqlclient
+sklearn

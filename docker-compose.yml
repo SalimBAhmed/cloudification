@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  web:
+    container_name: "web"
+    build: ./
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    networks:
+      - local-net
+  db:
+    container_name: "db"
+    image: mysql
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - ./docker/db/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=cloudification
+      - MYSQL_USER=salim
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=toor
+    networks:
+      - local-net
+networks:
+  local-net:
+    driver: bridge
