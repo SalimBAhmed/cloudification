@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "mysql://root:toor@db:3306/cloudification"
+SQLALCHEMY_DATABASE_URL = "mysql://sql11443827:MphlAfQv4t@sql11.freemysqlhosting.net:3306/sql11443827"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
