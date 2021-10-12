@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 import pickle
 
-import models, schemas, crud
+import app.models, app.schemas, app.crud
 
 models.Base.metadata.create_all(bind=engine)
 
