@@ -11,7 +11,7 @@ import pickle
 
 import app.models, app.schemas, app.crud
 
-models.Base.metadata.create_all(bind=engine)
+app.models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 # dependency 
@@ -55,7 +55,7 @@ def check(
     x = [[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, dpf, age]]
     prediction = model.predict(x)
 
-    user = schemas.UserBase(
+    user = app.schemas.UserBase(
         first_name= first_name, 
         last_name= last_name, 
         age= age, 
