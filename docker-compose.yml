@@ -3,6 +3,7 @@ services:
   web:
     container_name: "web"
     build: ./
+    image: chemuske013/web
     ports:
       - "80:80"
     depends_on:
@@ -11,7 +12,8 @@ services:
       - local-net
   db:
     container_name: "db"
-    image: mysql
+    build: ./docker/db
+    image: chemuske013/db
     restart: always
     tty: true
     ports:
@@ -27,6 +29,8 @@ services:
       - MYSQL_ROOT_PASSWORD=toor
     networks:
       - local-net
+
 networks:
   local-net:
     driver: bridge
+
