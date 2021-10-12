@@ -1,5 +1,5 @@
 from sqlalchemy.orm.session import Session
-from app.database import SessionLocal, engine
+from database import SessionLocal, engine
 
 from re import template
 from fastapi import FastAPI, Request, Form, Depends
@@ -9,9 +9,9 @@ from fastapi.templating import Jinja2Templates
 
 import pickle
 
-import app.models, app.schemas, app.crud
+import models, schemas, crud
 
-app.models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 # dependency 
@@ -55,7 +55,7 @@ def check(
     x = [[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, dpf, age]]
     prediction = model.predict(x)
 
-    user = app.schemas.UserBase(
+    user = schemas.UserBase(
         first_name= first_name, 
         last_name= last_name, 
         age= age, 
