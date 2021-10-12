@@ -1,5 +1,5 @@
 from sqlalchemy.orm.session import Session
-from database import SessionLocal, engine
+from app.database import SessionLocal, engine
 
 from re import template
 from fastapi import FastAPI, Request, Form, Depends
