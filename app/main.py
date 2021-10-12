@@ -22,8 +22,8 @@ def get_db():
     finally:
         db.close()
     
-app.mount("app/public/css", StaticFiles(directory="/public/css"), name="css")
-templates = Jinja2Templates(directory="app/public/")
+app.mount("public/css", StaticFiles(directory="/public/css"), name="css")
+templates = Jinja2Templates(directory="public/")
 
 model = pickle.load(open('model1','rb'))
 
