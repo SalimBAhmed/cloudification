@@ -34,7 +34,12 @@ jobs:
         auth:
           username: chemuske013
           password: watchCats013  # context / project UI env-var reference
-    
+        environment:
+          - MYSQL_DATABASE=cloudification
+          - MYSQL_USER=salim
+          - MYSQL_PASSWORD=root
+          - MYSQL_ROOT_PASSWORD=toor
+
     steps:
       - checkout
       - run:
