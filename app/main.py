@@ -9,11 +9,15 @@ from fastapi.templating import Jinja2Templates
 
 import pickle
 
+import uvicorn
+import os
+
 import models, schemas, crud
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
 # dependency 
 def get_db():
     db = SessionLocal()
@@ -80,3 +84,7 @@ def check(
 @app.get("/user/{id}")
 def read_user(id: int, db: Session = Depends(get_db)):
     return crud.get_user(db, id)
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv('PORT'))
