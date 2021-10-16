@@ -6,4 +6,3 @@ client = TestClient(app)
 def test1():
     response = client.get('/')
     assert response.status_code == 200
-    

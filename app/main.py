@@ -11,6 +11,8 @@ import pickle
 
 import models, schemas, crud
 
+import uvicorn
+
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -22,10 +24,10 @@ def get_db():
     finally:
         db.close()
     
-app.mount("/public/css", StaticFiles(directory="public/css"), name="css")
+app.mount("/public/css", StaticFiles(directory="app/public/css"), name="css")
 templates = Jinja2Templates(directory="public/")
 
-model = pickle.load(open('model1','rb'))
+model = pickle.load(open('app/model1','rb'))
 
 @app.get("/", response_class=HTMLResponse)
 def root(request: Request):
@@ -80,3 +82,6 @@ def check(
 @app.get("/user/{id}")
 def read_user(id: int, db: Session = Depends(get_db)):
     return crud.get_user(db, id)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0")
