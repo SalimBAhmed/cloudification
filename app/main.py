@@ -23,7 +23,7 @@ def get_db():
         db.close()
     
 app.mount("/public/css", StaticFiles(directory="app/public/css"), name="css")
-templates = Jinja2Templates(directory="public/")
+templates = Jinja2Templates(directory="app/public/")
 
 model = pickle.load(open('app/model1','rb'))
 
