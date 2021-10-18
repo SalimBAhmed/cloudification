@@ -58,7 +58,6 @@ jobs:
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a circleci-cloudification web
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a circleci-cloudification web
-      - run: 
 
 
 # Invoke jobs via workflows
