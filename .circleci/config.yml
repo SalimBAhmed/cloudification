@@ -38,26 +38,25 @@ jobs:
           pkg-manager: pip
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
-      - run:
-          name: Build
-          command: python app/main.py
+      #- run:
+      #    name: Build
+      #    command: python app/main.py
 
       - run:
           name: Tests
           # This assumes pytest is installed via the install-package step above
           command: pytest app/test.py
-
   deploy:
     machine: true
     steps:
       - run: 
-        name: Installing heroku CLI
-        command: |
-          set -x 
-          sudo curl https://cli-assets.heroku.com/install.sh | sh
-          HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-          HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a circleci-cloudification web
-          HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a circleci-cloudification web
+          name: Installing heroku CLI
+          command: |
+            set -x 
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a circleci-cloudification web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a circleci-cloudification web
 
 
 # Invoke jobs via workflows
