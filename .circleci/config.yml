@@ -70,3 +70,4 @@ workflows:
           branches:
             only:
               - circleci-project-setup
+      - deploy
