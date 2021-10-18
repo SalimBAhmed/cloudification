@@ -51,12 +51,8 @@ jobs:
     steps:
       - run: 
           name: Installing heroku CLI
-          command: |
-            set -x 
-            sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a circleci-cloudification web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a circleci-cloudification web
+          command: ls
+            
 
 
 # Invoke jobs via workflows
@@ -70,4 +66,9 @@ workflows:
           branches:
             only:
               - circleci-project-setup
-      - deploy
+      - deploy:
+        filters:
+          branches:
+            only:
+              - circleci-project-setup
+              - cloudification/heroku
