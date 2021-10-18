@@ -46,13 +46,27 @@ jobs:
           name: Tests
           # This assumes pytest is installed via the install-package step above
           command: pytest app/test.py
+      
+      - persist_to_workspace:
+          root: .
+          paths:
+            - app/
+            - requirements.txt
+            - Dockerfile
+
   deploy:
     machine: true
     steps:
+      - attach_workspace:
+          at: ./
       - run: 
           name: Installing heroku CLI
-          command: ls
-            
+          command: |
+            set -x 
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a circleci-cloudification 
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a circleci-cloudification web
 
 
 # Invoke jobs via workflows
@@ -67,8 +81,5 @@ workflows:
             only:
               - circleci-project-setup
       - deploy:
-        filters:
-          branches:
-            only:
-              - circleci-project-setup
-              - cloudification/heroku
+          requires:
+            - build-and-test
