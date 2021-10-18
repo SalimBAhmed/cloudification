@@ -60,7 +60,7 @@ jobs:
       - attach_workspace:
           at: ./
       - run: 
-          name: Installing heroku CLI
+          name: Install heroku CLI and deploy
           command: |
             set -x 
             sudo curl https://cli-assets.heroku.com/install.sh | sh
