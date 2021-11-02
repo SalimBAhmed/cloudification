@@ -1,4 +1,4 @@
-dfrom sqlalchemy.orm.session import Session
+from sqlalchemy.orm.session import Session
 from database import SessionLocal, engine
 
 from re import template
